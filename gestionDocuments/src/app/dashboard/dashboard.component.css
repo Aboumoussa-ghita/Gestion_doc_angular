@@ -1,0 +1,85 @@
+body {
+
+  background-image: url("https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+.sidebar {
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #333;
+  padding-top: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background-color: #555;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 60px;
+  margin-right: 220px; /* Ajustez la valeur en fonction de la largeur de la sidebar */
+}
+
+table {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 60%;
+  border-collapse: collapse;
+}
+
+body {
+  padding-top: 60px;
+}
+.logout-link {
+  color: white;
+}
+
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+
+table button, table input[type="text"] {
+  margin: 4px;
+  padding: 8px;
+}
+
+
+button.save, button.cancel, button.edit, button.docs, button.delete {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+}
+
+button.save {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+button.cancel {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+button.edit, button.docs, button.delete {
+  background-color: #008CBA; /* Blue */
+  color: white;
+}

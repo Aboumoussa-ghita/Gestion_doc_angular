@@ -1,0 +1,43 @@
+<nav class="sidebars">
+<div class="sidebar">
+    <div class="left-menu">
+      <ul>
+        <div style="color: #F08080 ; margin-left: 20px;" class="test"><li (click)="role_admin()">Administrators</li></div>
+        <div style="color: white; margin-left: 20px;" class="test"><li (click)="role_user()">Standard users</li></div>
+          <div style="color: white; margin-left: 20px;" class="test"><li (click)="ngOnInit()">All users</li></div>
+      </ul>
+    </div>
+    <div class="right-menu">
+      <ul>
+        <li style=" margin-left: 20px;"  class="deconnection"><a href="#">Log Out</a></li>
+      </ul>
+    </div>
+</div>
+</nav>
+  <div class="form-wrapper">
+    <div class="dashboard">
+      <table>
+        <tr>
+          <th class="header">Username</th>
+          <th class="header">Role</th>
+          <th class="header">Status</th>
+          <th class="header">Actions</th>
+        </tr>
+        <tr class="user-card" *ngFor="let user of users">
+          <th>{{user.username}}</th>
+          <td>{{user.role}}</td>
+          <td>{{user.accountStatus}}</td>
+          <td>
+
+
+            <button class="activate-btn" (click)="change_status(user)" [disabled]="user.accountStatus == 'active'">Activate</button>
+            <button class="suspend-btn" (click)="change_status(user)" [disabled]="user.accountStatus == 'suspended'">Suspend</button>
+            <button class="delete-btn" (click)="delete(user)">Delete</button>
+
+
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+

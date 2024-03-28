@@ -1,0 +1,50 @@
+<nav class="navbars">
+  <div class="app-names">
+    <a style="color: #F08080" routerLink="/user" class="black-link">Document Management</a>
+  </div>
+  <div class="app-names">
+    <a routerLink="/user" class="black-link">My Folders</a>
+  </div>
+  <div class="auth-links">
+    <a (click)="addDocument()">Add Document</a>
+  </div>
+  <div class="auth-links">
+    <a (click)="ngOnInit()">Refresh</a>
+  </div>
+  <div class="auth-links">
+    <a href="/login" class="black-link">Log Out</a>
+  </div>
+</nav>
+<div class="tables">
+  <table>
+    <thead>
+    <tr>
+      <th>Path</th>
+      <th>Name</th>
+      <th>Extension</th>
+      <th>Type</th>
+      <th>Size</th>
+      <th class="action-header">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let document of documents">
+      <td><input type="text" [(ngModel)]="document.emplacement" disabled></td>
+      <td><input type="text" [(ngModel)]="document.name" [disabled]="editingDocument !== document"></td>
+      <td><input type="text" [(ngModel)]="document.extension" [disabled]="editingDocument !== document"></td>
+      <td><input type="text" [(ngModel)]="document.type" [disabled]="editingDocument !== document"></td>
+      <td><input type="text" [(ngModel)]="document.taille" [disabled]="editingDocument !== document"></td>
+      <td class="action-cell">
+        <ng-container *ngIf="editingDocument === document">
+          <button class="saves" (click)="saveDocumentChanges()">Save</button>
+          <button class="cancels" (click)="cancelEdit()">Cancel</button>
+        </ng-container>
+        <ng-container *ngIf="editingDocument !== document">
+          <button class="edits" (click)="editDocument(document)">Edit</button>
+          <button class="deletes" (click)="confirmDelete(document)">Delete</button>
+        </ng-container>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

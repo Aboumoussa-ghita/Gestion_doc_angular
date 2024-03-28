@@ -1,0 +1,46 @@
+<div class="form-wrapper sign-up">
+  <form #loginForm="ngForm">
+    <h2>Sign Up</h2>
+    <div class="input-group">
+      <input type="text"  name="last-name" id="last-name" [(ngModel)]="last_name" required>
+      <label for="">Last Name</label>
+    </div>
+    <div class="input-group">
+      <input type="text"  name="first-name" id="first-name" [(ngModel)]="first_name" required>
+      <label for="">First Name</label>
+    </div>
+    <div class="input-group">
+      <input type="text"  name="username" id="username" [(ngModel)]="username" required minlength="4" maxlength="30">
+      <label for="">Username</label>
+    </div>
+    <div class="errorMessage" *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
+      <div *ngIf="loginForm.controls['username'].hasError('required')">the username is required.</div>
+      <div *ngIf="loginForm.controls['username'].hasError('minlength')">the username must have a minimum of 4 caracteres.</div>
+      <div *ngIf="loginForm.controls['username'].hasError('maxlength')">the username  must have a maximum of 30 caracteres.</div>
+    </div>
+    <div class="input-group">
+      <input type="email" name="email" id="email" [(ngModel)]="email" required>
+      <label for="">Email</label>
+    </div>
+    <div class="input-group">
+      <input type="password" name="password" id="password" [(ngModel)]="password" required minlength="8" maxlength="100" pattern="^(?=.*[0-9])(?=.*[$&!%+@#])[a-zA-Z0-9$&!%+@#]+$">
+      <label for="">Password</label>
+    </div>
+    <div class="errorMessage" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+      <div *ngIf="loginForm.controls['password'].hasError('required')">Password is required.</div>
+      <div *ngIf="loginForm.controls['password'].hasError('minlength')">Password must have at least 8 characters.</div>
+      <div *ngIf="loginForm.controls['password'].hasError('maxlength')">Password must not exceed 100 characters.</div>
+      <div *ngIf="loginForm.controls['password'].hasError('pattern')">Password must contain at least one digit and one special character ($&!%+@#).</div>
+    </div>
+    <div class="input-group">
+      <input type="password" name="conf-password" id="conf-password" [(ngModel)]="confirmed_password" required>
+      <label for="">Confirm Password</label>
+    </div>
+    <button type="submit" (click)="submit()">Sign Up</button>
+    <div *ngIf="errorMessage" class="errorMessage">{{ errorMessage }}</div>
+    <div *ngIf="confirm" class="errorMessage">{{ confirm }}</div>
+    <div class="signUp-link">
+      <p>Already have an account? <a href="login">Login</a></p>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,30 @@
+<div class="form-wrapper sign-in">
+    <form #loginForm="ngForm" (ngSubmit)="submit()">
+        <h2>Login</h2>
+        <div class="input-group">
+          <input type="text" id="username" name="username" [(ngModel)]="username" required minlength="4" maxlength="30"/>
+          <label for="username">Username</label>
+        </div>
+        <div class="errorMessage" *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
+            <div *ngIf="loginForm.controls['username'].hasError('required')">the username is required.</div>
+            <div *ngIf="loginForm.controls['username'].hasError('minlength')">the username must have a minimum of 4 caracteres.</div>
+            <div *ngIf="loginForm.controls['username'].hasError('maxlength')">the username  must have a maximum of 30 caracteres.</div>
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" name="password" [(ngModel)]="password" required minlength="8" maxlength="100" pattern="^(?=.*[0-9])(?=.*[$&!%+@#])[a-zA-Z0-9$&!%+@#]+$"/>
+          <label for="">Password</label>
+        </div>
+        <div class="errorMessage" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+            <div *ngIf="loginForm.controls['password'].hasError('required')">Password is required.</div>
+            <div *ngIf="loginForm.controls['password'].hasError('minlength')">Password must have at least 8 characters.</div>
+            <div *ngIf="loginForm.controls['password'].hasError('maxlength')">Password must not exceed 100 characters.</div>
+            <div *ngIf="loginForm.controls['password'].hasError('pattern')">Password must contain at least one digit and one special character ($&!%+@#).</div>
+        </div>
+        <button type="submit" name="login" id="login" >Login</button>
+        <div *ngIf="errorMessage" class="errorMessage">{{ errorMessage }}</div>
+        <div class="signUp-link">
+          <p>Don't have an account? <a href="/sign_up" class="signUpBtn-link">Sign Up</a></p>
+        </div>
+    </form>
+</div>
+

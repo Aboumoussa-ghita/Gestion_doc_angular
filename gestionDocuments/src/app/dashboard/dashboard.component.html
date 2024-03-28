@@ -1,0 +1,33 @@
+<aside class="sidebar">
+  <div class="auth-links">
+    <a style="color: #F08080">Folder Management</a>
+  </div>
+  <div class="auth-links">
+    <a (click)="add_dos()">Add Folder</a>
+  </div>
+  <div class="auth-links">
+    <a (click)="loadDossiers()">Refresh</a>
+  </div>
+  <div class="auth-links">
+    <a href="/login" class="logout-link">Log Out</a>
+  </div>
+</aside>
+
+<section class="table-container">
+  <table>
+    <tr *ngFor="let dossier of dossiers">
+        <th><input type="text" [(ngModel)]="dossier.name" [disabled]="editingdossier !== dossier"></th>
+          <td style="width: 400px;">
+          <ng-container *ngIf="editingdossier === dossier">
+            <button class="save" (click)="savedossierChanges()">Save</button>
+            <button class="cancel" (click)="cancelEdit()">Cancel</button>
+          </ng-container>
+          <ng-container *ngIf="editingdossier !== dossier">
+            <button class="edit" (click)="editdossier(dossier)">Edit Folder Name</button>
+            <button class="docs" [routerLink]="['/doc', dossier.id, dossier.name]">Documents List</button>
+            <button class="delete" (click)="deleteDossier(dossier)">Delete Folder</button>
+          </ng-container>
+        </td>
+      </tr>
+  </table>
+</section>
